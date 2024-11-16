@@ -1,34 +1,56 @@
 package com.kodilla;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
 
-    private char[][] values = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
-            {' ', ' ', ' '}
-    };
+    private char[][] values;
+    private int rows;
+    private int columns;
+    List<Character> winnersX = new ArrayList<>();
+    List<Character> winnersO = new ArrayList<>();
+
+    public Board(int rows, int columns) {
+        this.rows = rows;
+        this.columns = columns;
+        this.values = new char[rows][columns];
+    }
+
     private static int moves;
 
     public void showBoard() {
+
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[i].length; j++) {
-                System.out.print("|" + values[i][j]);
+                System.out.print("|" + values[i][j] + " ");
             }
             System.out.println("|");
         }
     }
 
     public void showFilledBoard() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                int o = i*3 + j + 1;
-                System.out.print("|" + o);
+        System.out.print("   ");
+        for (int i = 0; i < rows; i++) {
+            System.out.print(" " + (i));
+        }
+        System.out.println();
+        for (int i = 0; i < rows; i++) {
+            System.out.print(" " + (i) + " ");
+            for (int j = 0; j < rows; j++) {
+                char a = values[i][j];
+                if (a == 'X' || a == '0') {
+                    System.out.print("|" + values[i][j]);
+                } else {
+                    System.out.print("|" + " ");
+                }
             }
             System.out.println("|");
         }
     }
+
     public static int move() {
-        moves +=1;
+        moves += 1;
         return moves;
     }
 
@@ -36,28 +58,56 @@ public class Board {
         return moves;
     }
 
-    public void addMove(int moveNow, char xo){
-        int row = (moveNow - 1) / 3;
-        int col = (moveNow - 1) % 3;
-        if (xo == 0){
-            values[row][col] = 'X';
-        } else if (xo == 1){
-            values[row][col] = 'O';
+    public void addMove(int rows, int columns, char value) {
+        if (value == '0') {
+            values[rows][columns] = '0';
+        } else if (value == 'X') {
+            values[rows][columns] = 'X';
         }
     }
-/*
-    public void checkWinner() {
-        for (int row = 0; row < 3; row++) {
-            char first = values[row][0];
-            for (int column = 0; column < 3; column++) {
-                if (values[row][column] == first) {
-                    true;
-                }
+
+    public boolean isWinner() {
+        for (int i = 0; i < 3; i++) {
+            if ((values[i][0] == values[i][1] && values[i][1] == values[i][2]) && (values[i][0] == 'X' || values[i][0] == '0')) {
+                System.out.println("Wygrywa " + values[i][0]);
+                return true;
+            } else if ((values[0][i] == values[1][i] && values[1][i] == values[2][i]) && (values[0][i] == 'X' || values[0][i] == '0')) {
+                System.out.println("Wygrywa " + values[0][i]);
+                return true;
+            } else if ((values[0][0] == values[1][1] && values[1][1] == values[2][2]) && (values[0][0] == 'X' || values[0][0] == '0')) {
+                System.out.println("Wygrywa " + values[0][0]);
+                return true;
+            } else if ((values[2][0] == values[1][1] && values[1][1] == values[0][2]) && (values[2][0] == 'X' || values[2][0] == '0')) {
+                System.out.println("Wygrywa " + values[2][0]);
+                return true;
+            } else if (isAnyWinner()) {
+                return true;
             }
         }
+        return false;
     }
 
-*/
+    public char getValue(int rows, int columns) {
+        return values[rows][columns];
+    }
 
+    public boolean whoIsWinner() {
+        boolean win = isWinner();
+        return win;
+    }
 
+    public boolean isAnyWinner() {
+        List<Character> noWinner = new ArrayList<>();
+        for (char[] row : values) {
+            for (char sign : row) {
+                if (sign == 'X' || sign == '0') {
+                noWinner.add(sign);}
+            }
+        }
+        if (noWinner.size() == 9) {
+            System.out.println("It is a draw");
+            return true;
+        }
+        return false;
+    }
 }

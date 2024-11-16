@@ -2,5 +2,6 @@ package com.kodilla;
 
 public interface User {
 
-    public int yourMove();
+    public int yourMoveX();
+    public int yourMoveY();
 }

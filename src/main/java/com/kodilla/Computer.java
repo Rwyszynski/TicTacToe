@@ -3,9 +3,16 @@ package com.kodilla;
 public class Computer implements User {
 
     @Override
-    public int yourMove() {
-        int randomDigit = (int) (Math.random() * 9) + 1;
-        System.out.println(randomDigit);
-        return randomDigit;
+    public int yourMoveX() {
+        int randomDigitX = (int) (Math.random() * 3) ;
+        System.out.println(randomDigitX);
+        return randomDigitX;
+    }
+
+    @Override
+    public int yourMoveY() {
+        int randomDigitY = (int) (Math.random() * 3) ;
+        System.out.println(randomDigitY);
+        return randomDigitY;
     }
 }
