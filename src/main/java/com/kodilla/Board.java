@@ -19,16 +19,6 @@ public class Board {
 
     private static int moves;
 
-    public void showBoard() {
-
-        for (int i = 0; i < values.length; i++) {
-            for (int j = 0; j < values[i].length; j++) {
-                System.out.print("|" + values[i][j] + " ");
-            }
-            System.out.println("|");
-        }
-    }
-
     public void showFilledBoard() {
         System.out.print("   ");
         for (int i = 0; i < rows; i++) {
@@ -87,13 +77,28 @@ public class Board {
         return false;
     }
 
+    public boolean isWinner10(){
+        return false;
+    }
+
     public char getValue(int rows, int columns) {
         return values[rows][columns];
     }
 
     public boolean whoIsWinner() {
-        boolean win = isWinner();
-        return win;
+        if (columns == 3) {
+            boolean win = isWinner();
+            return win;
+        } else {
+            boolean win = isWinner();
+            return win;
+        }
+    }
+
+    public int computerOrHuman() {
+        InputSelector inputSelector = new InputSelector();
+        int ifHuman = inputSelector.computerOrHuman();
+        return ifHuman;
     }
 
     public boolean isAnyWinner() {
@@ -105,7 +110,8 @@ public class Board {
             }
         }
         if (noWinner.size() == 9) {
-            System.out.println("It is a draw");
+            OutputComputer oc = new OutputComputer();
+            oc.draw();
             return true;
         }
         return false;

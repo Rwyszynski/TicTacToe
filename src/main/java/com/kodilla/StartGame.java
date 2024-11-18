@@ -7,6 +7,8 @@ public class StartGame {
         Computer computer = new Computer();
         OutputComputer outputComputer = new OutputComputer();
         Board board = new Board(boardSize, boardSize);
+        outputComputer.computerOrHuman();
+        int compOrHum = board.computerOrHuman();
         board.showFilledBoard();
 
         while(!board.whoIsWinner()){
@@ -21,15 +23,29 @@ public class StartGame {
                     Board.move();
                 }
             } else {
-                int row = computer.yourMoveX();
-                int col = computer.yourMoveY();
-                char val = board.getValue(row, col);
-                if ((val == 'X') || (val == '0')) {
-                    System.out.println("Zły ruch");
-                    continue;
-                } else {
-                    board.addMove(row, col, '0');
-                    Board.move();
+                if (compOrHum == 1) {
+                    int row = computer.yourMoveX();
+                    int col = computer.yourMoveY();
+                    char val = board.getValue(row, col);
+                    if ((val == 'X') || (val == '0')) {
+                        System.out.println("Zły ruch");
+                        continue;
+
+                    } else {
+                        board.addMove(row, col, '0');
+                        Board.move();
+                    }
+                } else if (compOrHum == 2) {
+                    int row = realUser.yourMoveX();
+                    int col = realUser.yourMoveY();
+                    char val = board.getValue(row, col);
+                    if ((val == 'X') || (val == '0')){
+                        outputComputer.wrongMove();
+                    } else {
+                        board.addMove(row, col, '0');
+                        Board.move();
+                    }
+
                 }
             }
             board.showFilledBoard();

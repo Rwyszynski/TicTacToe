@@ -29,4 +29,8 @@ public class OutputComputer {
     public void draw() {
         System.out.println("Draw");
     }
+
+    public void computerOrHuman() {
+        System.out.println("Do you want to play with computer(1) or human(2)?");
+    }
 }

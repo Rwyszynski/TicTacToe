@@ -19,4 +19,17 @@ public class InputSelector {
         int youMoveY = Integer.parseInt(scanner.nextLine());
         return youMoveY;
     }
+
+    public int inputValidator(int check) throws InputDataExeption{
+        try{
+            return check;
+        } catch (Exception e) {
+            throw new InputDataExeption("You've put wrong value");
+        }
+    }
+
+    public int computerOrHuman() {
+        int computerOrHuman = Integer.parseInt(scanner.nextLine());
+        return computerOrHuman;
+    }
 }

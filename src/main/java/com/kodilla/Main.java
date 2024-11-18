@@ -7,9 +7,13 @@ public class Main {
         outputComputer.gameStart();
         outputComputer.gameType();
         InputSelector inputSelector = new InputSelector();
-        int boardSize = inputSelector.boardType();
-        StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize);
+        try {
+            int boardSize = inputSelector.inputValidator(inputSelector.boardType());
+            StartGame startGame = new StartGame();
+            startGame.runGame(boardSize, boardSize);
+        } catch (NumberFormatException e) {
+            System.out.println("You've put wrong value");
+        }
         outputComputer.gameOver();
 
     }
