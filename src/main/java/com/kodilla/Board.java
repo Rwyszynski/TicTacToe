@@ -78,8 +78,44 @@ public class Board {
     }
 
     public boolean isWinner10(){
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < rows; j++) {
+                if (values[i][j] != 'X' || values[i][j] != '0') {
+                    if (checkWin(i, j, 1, 0) ||
+                            checkWin(i, j, 0, 1) ||
+                            checkWin(i, j, 1, 1) ||
+                            checkWin(i, j, 1, -1)) {
+                        return true;
+                    } else {
+                        break;
+                    }
+                }
+
+            }
+        }
         return false;
     }
+
+    public boolean checkWin(int row, int col, int rowDir, int colDir) {
+        char symbol = values[row][col];
+        int count = 0;
+
+        for (int i = 0; i < 5; i++) {
+            int r = row + i * rowDir;
+            int c = col + i * colDir;
+            if (r < 0 || r >= rows || c < 0 || c >= rows || values[r][c] != symbol) {
+                return false;
+            }
+            count++;
+
+        }
+        if (symbol == 'X' || symbol == '0') {
+            System.out.println("Wygrywa " + symbol);
+            return true;
+        }
+        return false;
+    }
+
 
     public char getValue(int rows, int columns) {
         return values[rows][columns];
@@ -90,7 +126,7 @@ public class Board {
             boolean win = isWinner();
             return win;
         } else {
-            boolean win = isWinner();
+            boolean win = isWinner10();
             return win;
         }
     }

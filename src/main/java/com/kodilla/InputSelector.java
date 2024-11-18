@@ -23,7 +23,7 @@ public class InputSelector {
     public int inputValidator(int check) throws InputDataExeption{
         try{
             return check;
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             throw new InputDataExeption("You've put wrong value");
         }
     }

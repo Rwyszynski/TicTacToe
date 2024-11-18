@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class RealUser implements User {
 
     @Override
-    public int yourMoveX() {
+    public int yourMoveX(int board) {
         OutputComputer oc = new OutputComputer();
         oc.playerTurnX();
         InputSelector in = new InputSelector();
@@ -13,7 +13,7 @@ public class RealUser implements User {
     }
 
     @Override
-    public int yourMoveY() {
+    public int yourMoveY(int board) {
         OutputComputer oc = new OutputComputer();
         oc.playerTurnY();
         InputSelector in = new InputSelector();
