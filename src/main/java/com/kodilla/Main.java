@@ -11,7 +11,7 @@ public class Main {
             int boardSize = inputSelector.inputValidator(inputSelector.boardType());
             StartGame startGame = new StartGame();
             startGame.runGame(boardSize, boardSize);
-        } catch (InputDataExeption e) {
+        } catch (RuntimeException e) {
             System.out.println("You've put wrong value");
         }
         outputComputer.gameOver();
