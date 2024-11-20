@@ -176,12 +176,10 @@ public class TicTacToeTestSuite {
         InputSelector inputSelector = new InputSelector();
         int boardSize = inputSelector.boardType();
         StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize, inputSelector);
 
-        String whoWin = "Exception";
 
         // then
-        assertEquals("Exception", whoWin);
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> startGame.runGame(boardSize, boardSize, inputSelector));
     }
 }
 
