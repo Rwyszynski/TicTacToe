@@ -33,4 +33,36 @@ public class OutputComputer {
     public void computerOrHuman() {
         System.out.println("Do you want to play with computer(1) or human(2)?");
     }
+
+    public void showFilledBoard(Board board) {
+        System.out.print("   ");
+        for (int i = 0; i < board.getRows(); i++) {
+            System.out.print(" " + (i));
+        }
+        System.out.println();
+        for (int i = 0; i < board.getRows(); i++) {
+            System.out.print(" " + (i) + " ");
+            for (int j = 0; j < board.getRows(); j++) {
+                char a = board.getValues()[i][j];
+                if (a == 'X' || a == '0') {
+                    System.out.print("|" + board.getValues()[i][j]);
+                } else {
+                    System.out.print("|" + " ");
+                }
+            }
+            System.out.println("|");
+        }
+    }
+
+    public void showError () {
+        System.out.println("You've put wrong value");
+    }
+
+    public static void showWinner(char whoWon) {
+        System.out.println("Wygrywa " + whoWon);
+    }
+
+    public static void wrongMoves () {
+        System.out.println("Zły ruch");
+    }
 }

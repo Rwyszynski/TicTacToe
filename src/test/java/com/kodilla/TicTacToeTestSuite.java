@@ -22,7 +22,7 @@ public class TicTacToeTestSuite {
         InputSelector inputSelector = new InputSelector();
         int boardSize = inputSelector.boardType();
         StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize, inputSelector);
+        startGame.runGame(boardSize, inputSelector);
 
         String whoWin = "Won X";
 
@@ -44,7 +44,7 @@ public class TicTacToeTestSuite {
         InputSelector inputSelector = new InputSelector();
         int boardSize = inputSelector.boardType();
         StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize, inputSelector);
+        startGame.runGame(boardSize,  inputSelector);
 
         String whoWin = "Won X";
 
@@ -66,7 +66,7 @@ public class TicTacToeTestSuite {
         InputSelector inputSelector = new InputSelector();
         int boardSize = inputSelector.boardType();
         StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize, inputSelector);
+        startGame.runGame(boardSize, inputSelector);
 
         String whoWin = "Won X";
 
@@ -88,7 +88,7 @@ public class TicTacToeTestSuite {
         InputSelector inputSelector = new InputSelector();
         int boardSize = inputSelector.boardType();
         StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize, inputSelector);
+        startGame.runGame(boardSize, inputSelector);
 
         String whoWin = "Won 0";
 
@@ -110,7 +110,7 @@ public class TicTacToeTestSuite {
         InputSelector inputSelector = new InputSelector();
         int boardSize = inputSelector.boardType();
         StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize, inputSelector);
+        startGame.runGame(boardSize, inputSelector);
 
         String whoWin = "Won 0";
 
@@ -132,7 +132,7 @@ public class TicTacToeTestSuite {
         InputSelector inputSelector = new InputSelector();
         int boardSize = inputSelector.boardType();
         StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize, inputSelector);
+        startGame.runGame(boardSize, inputSelector);
 
         String whoWin = "Won 0";
 
@@ -154,7 +154,7 @@ public class TicTacToeTestSuite {
         InputSelector inputSelector = new InputSelector();
         int boardSize = inputSelector.boardType();
         StartGame startGame = new StartGame();
-        startGame.runGame(boardSize, boardSize, inputSelector);
+        startGame.runGame(boardSize, inputSelector);
 
         String whoWin = "Draw";
 
@@ -179,7 +179,7 @@ public class TicTacToeTestSuite {
 
 
         // then
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> startGame.runGame(boardSize, boardSize, inputSelector));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> startGame.runGame(boardSize, inputSelector));
     }
 }
 

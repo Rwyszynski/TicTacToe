@@ -1,8 +1,8 @@
 package com.kodilla;
 
 public class Main {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         OutputComputer outputComputer = new OutputComputer();
         outputComputer.gameStart();
         outputComputer.gameType();
@@ -10,13 +10,10 @@ public class Main {
         try {
             int boardSize = inputSelector.inputValidator(inputSelector.boardType());
             StartGame startGame = new StartGame();
-            startGame.runGame(boardSize, boardSize, null);
-        }catch (InputDataExeption e) {
-            System.out.println(e.getMessage());
-        } catch (RuntimeException e) {
-            System.out.println("You've put wrong value");
+            startGame.runGame(boardSize, null);
+        } catch (InputDataException e) {
+            outputComputer.showError();
         }
         outputComputer.gameOver();
-        //update
     }
 }

@@ -1,15 +1,17 @@
 package com.kodilla;
 
+import static com.kodilla.OutputComputer.wrongMoves;
+
 public class StartGame {
 
-    public void runGame(int boardSize, int boardSize2, InputSelector inputSelector) {
+    public void runGame(int boardSize, InputSelector inputSelector) {
         RealUser realUser = new RealUser(inputSelector);
         Computer computer = new Computer();
         OutputComputer outputComputer = new OutputComputer();
         Board board = new Board(boardSize, boardSize, inputSelector);
         outputComputer.computerOrHuman();
         int compOrHum = board.computerOrHuman();
-        board.showFilledBoard();
+        outputComputer.showFilledBoard(board);
 
         while(!board.whoIsWinner()){
             if (Board.getMoves() % 2 == 0){
@@ -28,7 +30,7 @@ public class StartGame {
                     int col = computer.yourMoveY(boardSize);
                     char val = board.getValue(row, col);
                     if ((val == 'X') || (val == '0')) {
-                        System.out.println("Zły ruch");
+                        wrongMoves();
                         continue;
 
                     } else {
@@ -47,7 +49,7 @@ public class StartGame {
                     }
                 }
             }
-            board.showFilledBoard();
+            outputComputer.showFilledBoard(board);
         }
     }
 }
